@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CoinApp</string>
+
+    <string name="size">Size</string>
+    <string name="bids">Bids</string>
+    <string name="asks">Asks</string>
+    <string name="currency_prefix">$ %s</string>
+</resources>
