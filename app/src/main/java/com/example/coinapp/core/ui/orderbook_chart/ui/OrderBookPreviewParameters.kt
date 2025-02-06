@@ -1,9 +1,9 @@
-package com.example.coinapp.orderbook_chart.ui
+package com.example.coinapp.core.ui.orderbook_chart.ui
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import com.example.coinapp.orderbook_chart.model.OrderBookData
-import com.example.coinapp.orderbook_chart.model.OrderBookEntry
-import com.example.coinapp.orderbook_chart.model.OrderBookEntryType
+import com.example.coinapp.core.ui.orderbook_chart.model.OrderBookData
+import com.example.coinapp.core.ui.orderbook_chart.model.OrderBookEntry
+import com.example.coinapp.core.ui.orderbook_chart.model.OrderBookEntryType
 import java.math.BigDecimal
 
 class OrderBookPreviewParameters : PreviewParameterProvider<OrderBookData>{

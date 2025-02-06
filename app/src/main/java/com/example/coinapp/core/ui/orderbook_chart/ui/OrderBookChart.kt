@@ -1,4 +1,4 @@
-package com.example.coinapp.orderbook_chart.ui
+package com.example.coinapp.core.ui.orderbook_chart.ui
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,8 +14,8 @@ import androidx.compose.ui.graphics.copy
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import com.example.coinapp.core.theme.Dimens
-import com.example.coinapp.orderbook_chart.model.OrderBookData
-import com.example.coinapp.orderbook_chart.model.OrderBookEntryType
+import com.example.coinapp.core.ui.orderbook_chart.model.OrderBookData
+import com.example.coinapp.core.ui.orderbook_chart.model.OrderBookEntryType
 
 private const val CHART_HEIGHT = 150
 private const val ALPHA_HALF = .5f

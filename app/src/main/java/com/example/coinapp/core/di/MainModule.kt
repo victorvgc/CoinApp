@@ -1,7 +1,7 @@
 package com.example.coinapp.core.di
 
 import com.example.coinapp.BuildConfig
-import com.example.coinapp.data.api.CoinAppService
+import com.example.coinapp.core.data.api.CoinAppService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module

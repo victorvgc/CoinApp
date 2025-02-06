@@ -1,4 +1,4 @@
-package com.example.coinapp.orderbook_chart.ui
+package com.example.coinapp.core.ui.orderbook_chart.ui
 
 import android.content.res.Configuration
 import android.icu.number.NumberFormatter
@@ -27,8 +27,8 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import com.example.coinapp.R
 import com.example.coinapp.core.theme.AppTheme
 import com.example.coinapp.core.theme.Dimens
-import com.example.coinapp.orderbook_chart.model.OrderBookData
-import com.example.coinapp.orderbook_chart.model.OrderBookEntryType
+import com.example.coinapp.core.ui.orderbook_chart.model.OrderBookData
+import com.example.coinapp.core.ui.orderbook_chart.model.OrderBookEntryType
 import java.util.Locale
 
 private const val MIN_DECIMAL_DIGITS = 2

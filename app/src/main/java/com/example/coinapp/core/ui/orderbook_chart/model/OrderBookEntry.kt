@@ -1,4 +1,4 @@
-package com.example.coinapp.orderbook_chart.model
+package com.example.coinapp.core.ui.orderbook_chart.model
 
 import java.math.BigDecimal
 

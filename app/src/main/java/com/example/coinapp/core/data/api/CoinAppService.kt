@@ -1,9 +1,9 @@
-package com.example.coinapp.data.api
+package com.example.coinapp.core.data.api
 
-import com.example.coinapp.data.model.remote.RemoteAsset
-import com.example.coinapp.data.model.remote.RemoteExchange
-import com.example.coinapp.data.model.remote.RemoteOrderBook
-import com.example.coinapp.data.model.remote.RemoteSymbol
+import com.example.coinapp.core.data.model.remote.RemoteAsset
+import com.example.coinapp.core.data.model.remote.RemoteExchange
+import com.example.coinapp.core.data.model.remote.RemoteOrderBook
+import com.example.coinapp.core.data.model.remote.RemoteSymbol
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

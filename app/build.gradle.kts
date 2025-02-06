@@ -79,4 +79,7 @@ dependencies {
     implementation(libs.okhttp.logging)
 
     implementation(libs.timber)
+
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network)
 }
