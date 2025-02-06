@@ -5,4 +5,7 @@
     <string name="bids">Bids</string>
     <string name="asks">Asks</string>
     <string name="currency_prefix">$ %s</string>
+
+    <string name="retry_message">Try again</string>
+    <string name="loading">Loading…</string>
 </resources>

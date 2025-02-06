@@ -1,4 +1,4 @@
-package com.example.coinapp.data.model.remote
+package com.example.coinapp.core.data.model.remote
 
 import com.squareup.moshi.Json
 import java.io.Serializable
