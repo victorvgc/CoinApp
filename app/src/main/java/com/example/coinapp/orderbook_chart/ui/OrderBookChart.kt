@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.copy
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
-import com.example.coinapp.core.theme.theme.Dimens
+import com.example.coinapp.core.theme.Dimens
 import com.example.coinapp.orderbook_chart.model.OrderBookData
 import com.example.coinapp.orderbook_chart.model.OrderBookEntryType
 

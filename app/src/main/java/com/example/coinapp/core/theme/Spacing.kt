@@ -1,4 +1,4 @@
-package com.example.coinapp.core.theme.theme
+package com.example.coinapp.core.theme
 
 import androidx.compose.ui.unit.dp
 
