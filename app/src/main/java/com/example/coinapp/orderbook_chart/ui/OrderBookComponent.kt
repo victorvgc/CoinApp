@@ -24,10 +24,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.unit.dp
 import com.example.coinapp.R
-import com.example.coinapp.core.theme.theme.AppTheme
-import com.example.coinapp.core.theme.theme.Dimens
+import com.example.coinapp.core.theme.AppTheme
+import com.example.coinapp.core.theme.Dimens
 import com.example.coinapp.orderbook_chart.model.OrderBookData
 import com.example.coinapp.orderbook_chart.model.OrderBookEntryType
 import java.util.Locale
