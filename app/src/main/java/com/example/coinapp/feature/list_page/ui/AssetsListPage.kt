@@ -3,6 +3,7 @@ package com.example.coinapp.feature.list_page.ui
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.navigation.NavHostController
+import com.example.coinapp.core.navigation.Page
 import com.example.coinapp.core.ui.BasePage
 import com.example.coinapp.feature.list_page.view_model.AssetsListViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -22,6 +23,7 @@ fun AssetsListPage(
             list = data.assetsList,
             onItemClick = {
                 viewModel.onUiAction(AssetsListViewModel.UiAction.OnAssetClick(it))
+                navHostController.navigate(Page.AssetDetails.createRoute(it.id))
             }
         )
     }

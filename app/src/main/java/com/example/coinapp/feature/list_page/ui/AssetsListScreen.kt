@@ -57,7 +57,7 @@ fun AssetsListScreen(
                 },
                 supportingContent = {
                     Text(
-                        text = stringResource(R.string.currency_prefix).format(
+                        text = stringResource(R.string.daily_volume).format(
                             numberFormatter.format(item.dailyVolume).toString()
                         )
                     )
