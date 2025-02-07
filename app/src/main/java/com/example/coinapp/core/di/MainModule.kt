@@ -2,6 +2,10 @@ package com.example.coinapp.core.di
 
 import com.example.coinapp.BuildConfig
 import com.example.coinapp.core.data.api.CoinAppService
+import com.example.coinapp.core.data.data_source.RemoteAssetsDataSourceImpl
+import com.example.coinapp.core.data.repository.AssetsRepositoryImpl
+import com.example.coinapp.core.domain.data_souce.AssetsDataSource
+import com.example.coinapp.core.domain.repository.AssetsRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -11,7 +15,7 @@ import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 val mainModule = module {
-    single {
+    single<Retrofit> {
         val loggingInterceptor = HttpLoggingInterceptor {
             Timber.tag("OkHttp")
         }.also {
@@ -41,5 +45,19 @@ val mainModule = module {
 
     single<CoinAppService> {
         get<Retrofit>().create(CoinAppService::class.java)
+    }
+
+    // data source
+    factory<AssetsDataSource.Remote> {
+        RemoteAssetsDataSourceImpl(
+            coinAppService = get()
+        )
+    }
+
+    // repository
+    factory<AssetsRepository> {
+        AssetsRepositoryImpl(
+            remoteAssetsDataSource = get()
+        )
     }
 }

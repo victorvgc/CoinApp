@@ -1,8 +1,10 @@
 package com.example.coinapp.feature.list_page.ui.model
 
+import java.math.BigDecimal
+
 data class UiAssetItem(
     val id: String,
-    val iconUrl: String,
+    val iconId: String,
     val name: String,
-    val dailyVolume: String
+    val dailyVolume: BigDecimal
 )

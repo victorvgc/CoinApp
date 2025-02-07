@@ -1,5 +1,6 @@
 package com.example.coinapp.feature.list_page.ui
 
+import android.icu.number.NumberFormatter
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,18 +16,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import coil3.compose.rememberAsyncImagePainter
+import com.example.coinapp.BuildConfig
 import com.example.coinapp.R
 import com.example.coinapp.core.theme.AppTheme
 import com.example.coinapp.core.theme.Dimens
 import com.example.coinapp.feature.list_page.ui.model.UiAssetItem
+import java.math.BigDecimal
+import java.util.Locale
 
 @Composable
 fun AssetsListScreen(
     list: List<UiAssetItem>,
     onItemClick: (UiAssetItem) -> Unit
 ) {
+    val numberFormatter = NumberFormatter.with()
+        .locale(Locale.getDefault())
+
     LazyColumn(
         modifier = Modifier
             .background(color = MaterialTheme.colorScheme.surface)
@@ -49,14 +57,16 @@ fun AssetsListScreen(
                 },
                 supportingContent = {
                     Text(
-                        text = item.dailyVolume
+                        text = stringResource(R.string.currency_prefix).format(
+                            numberFormatter.format(item.dailyVolume).toString()
+                        )
                     )
                 },
                 leadingContent = {
                     Image(
                         modifier = Modifier.size(Dimens.Size.small),
                         painter = rememberAsyncImagePainter(
-                            model = item.iconUrl,
+                            model = BuildConfig.ICONS_URL.format(item.iconId),
                             error = painterResource(R.drawable.broken_image),
                             fallback = painterResource(R.drawable.broken_image),
                         ),
@@ -80,15 +90,15 @@ private fun Preview() {
             list = listOf(
                 UiAssetItem(
                     id = "BTC",
-                    iconUrl = "",
+                    iconId = "",
                     name = "Bitcoin",
-                    dailyVolume = "$2.086.392.323.256,16 USD"
+                    dailyVolume = BigDecimal("2086392323256.16")
                 ),
                 UiAssetItem(
                     id = "BTC",
-                    iconUrl = "",
+                    iconId = "",
                     name = "Bitcoin",
-                    dailyVolume = "$2.086.392.323.256,16 USD"
+                    dailyVolume = BigDecimal("2086392323256.16")
                 ),
             )
         ) {}
