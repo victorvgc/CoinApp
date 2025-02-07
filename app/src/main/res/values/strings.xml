@@ -5,7 +5,18 @@
     <string name="bids">Bids</string>
     <string name="asks">Asks</string>
     <string name="currency_prefix">$ %s</string>
+    <string name="daily_volume">$ %s USD</string>
 
     <string name="retry_message">Try again</string>
     <string name="loading">Loading…</string>
+
+    <string name="back_arrow">Back Button</string>
+    <string name="select_arrow">Select %s</string>
+
+    <string name="asset_price">Price: $ %s USD</string>
+    <string name="asset_daily_volume">Daily Volume: $ %s USD</string>
+
+    <string name="select_exchange">Select an Exchange:</string>
+    <string name="select_symbol">Select a Symbol:</string>
+    <string name="empty_list">Ops! Seems like we don\'t have info here.</string>
 </resources>

@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.coinapp.core.di.mainModule
 import com.example.coinapp.core.navigation.MainNavGraph
 import com.example.coinapp.core.theme.AppTheme
+import com.example.coinapp.feature.details_page.di.assetDetailsModule
 import com.example.coinapp.feature.list_page.di.assetsListModule
 import org.koin.compose.KoinApplication
 
@@ -23,6 +24,7 @@ class MainActivity : ComponentActivity() {
                 modules(
                     mainModule,
                     assetsListModule,
+                    assetDetailsModule,
                 )
             }) {
                 val navController = rememberNavController()
