@@ -1,6 +1,6 @@
 package com.example.coinapp.core.data.repository
 
-import com.example.coinapp.core.domain.data_souce.AssetsDataSource
+import com.example.coinapp.core.domain.data_souce.AssetDataSource
 import com.example.coinapp.core.domain.model.ResultWrapper
 import com.example.coinapp.test_utils.AssetsUtils
 import com.example.coinapp.test_utils.coVerifyOnce
@@ -11,16 +11,16 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
-class AssetsRepositoryImplTest {
+class AssetRepositoryImplTest {
 
-    private lateinit var sut: AssetsRepositoryImpl
+    private lateinit var sut: AssetRepositoryImpl
 
-    private val mockAssetsDataSource: AssetsDataSource.Remote = mockk()
+    private val mockAssetDataSource: AssetDataSource.Remote = mockk()
 
     @Before
     fun setup() {
-        sut = AssetsRepositoryImpl(
-            remoteAssetsDataSource = mockAssetsDataSource
+        sut = AssetRepositoryImpl(
+            remoteAssetDataSource = mockAssetDataSource
         )
     }
 
@@ -28,7 +28,7 @@ class AssetsRepositoryImplTest {
     fun `when getAssetsList then call the assets data source properly`() = runTest {
         // arrange
         coEvery {
-            mockAssetsDataSource.getAssetsList()
+            mockAssetDataSource.getAssetsList()
         } returns ResultWrapper.success(AssetsUtils.appAssetsList)
 
         // act
@@ -36,7 +36,7 @@ class AssetsRepositoryImplTest {
 
         // assert
         coVerifyOnce {
-            mockAssetsDataSource.getAssetsList()
+            mockAssetDataSource.getAssetsList()
         }
     }
 
@@ -45,7 +45,7 @@ class AssetsRepositoryImplTest {
         runTest {
             // arrange
             coEvery {
-                mockAssetsDataSource.getAssetsList()
+                mockAssetDataSource.getAssetsList()
             } returns ResultWrapper.success(AssetsUtils.appAssetsList)
 
             // act
@@ -64,7 +64,7 @@ class AssetsRepositoryImplTest {
     fun `when getAssetsList is a failure then return a failure result`() = runTest {
         // arrange
         coEvery {
-            mockAssetsDataSource.getAssetsList()
+            mockAssetDataSource.getAssetsList()
         } returns ResultWrapper.error(Exception())
 
         // act

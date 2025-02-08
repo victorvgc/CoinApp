@@ -9,7 +9,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-private const val MAX_ORDER_BOOK_ENTRIES = 5
+private const val MAX_ORDER_BOOK_ENTRIES = 50
 
 interface CoinAppService {
     @GET("assets")
@@ -22,6 +22,7 @@ interface CoinAppService {
     suspend fun listSymbolsByAssetAndExchange(
         @Query("filter_asset_ID") baseAssetId: String,
         @Query("filter_exchange") exchangeId: String,
+        @Query("filter_symbol_id") symbolId: String,
     ): Response<List<RemoteSymbol>>
 
     @GET("orderbooks/{symbol_id}/current")

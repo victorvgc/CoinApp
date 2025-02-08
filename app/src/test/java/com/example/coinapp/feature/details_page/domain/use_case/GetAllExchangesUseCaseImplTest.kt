@@ -1,8 +1,8 @@
-package com.example.coinapp.feature.list_page.domain.use_case
+package com.example.coinapp.feature.details_page.domain.use_case
 
 import com.example.coinapp.core.domain.model.ResultWrapper
-import com.example.coinapp.core.domain.repository.AssetRepository
-import com.example.coinapp.test_utils.AssetsUtils
+import com.example.coinapp.core.domain.repository.ExchangeRepository
+import com.example.coinapp.test_utils.ExchangesUtils
 import com.example.coinapp.test_utils.coVerifyOnce
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -11,16 +11,16 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
-class GetAllAssetsUseCaseImplTest {
+class GetAllExchangesUseCaseImplTest {
 
-    private lateinit var sut: GetAllAssetsUseCaseImpl
+    private lateinit var sut: GetAllExchangesUseCaseImpl
 
-    private val mockAssetRepository: AssetRepository = mockk()
+    private val mockExchangeRepository: ExchangeRepository = mockk()
 
     @Before
     fun setup() {
-        sut = GetAllAssetsUseCaseImpl(
-            assetRepository = mockAssetRepository
+        sut = GetAllExchangesUseCaseImpl(
+            exchangeRepository = mockExchangeRepository
         )
     }
 
@@ -28,7 +28,7 @@ class GetAllAssetsUseCaseImplTest {
     fun `when invoke then call the repository properly`() = runTest {
         // arrange
         coEvery {
-            mockAssetRepository.getAssetsList()
+            mockExchangeRepository.getExchangeList()
         } returns ResultWrapper.success(emptyList())
 
         // act
@@ -36,7 +36,7 @@ class GetAllAssetsUseCaseImplTest {
 
         // assert
         coVerifyOnce {
-            mockAssetRepository.getAssetsList()
+            mockExchangeRepository.getExchangeList()
         }
     }
 
@@ -44,8 +44,8 @@ class GetAllAssetsUseCaseImplTest {
     fun `when invoke is successful then return the success result`() = runTest {
         // arrange
         coEvery {
-            mockAssetRepository.getAssetsList()
-        } returns ResultWrapper.success(AssetsUtils.appAssetsList)
+            mockExchangeRepository.getExchangeList()
+        } returns ResultWrapper.success(ExchangesUtils.appExchangeList)
 
         // act
         val result = sut()
@@ -54,7 +54,7 @@ class GetAllAssetsUseCaseImplTest {
         assert(result.isSuccess)
 
         assertEquals(
-            ResultWrapper.success(AssetsUtils.appAssetsList),
+            ResultWrapper.success(ExchangesUtils.appExchangeList),
             result
         )
     }
@@ -63,7 +63,7 @@ class GetAllAssetsUseCaseImplTest {
     fun `when invoke is an error then return the error result`() = runTest {
         // arrange
         coEvery {
-            mockAssetRepository.getAssetsList()
+            mockExchangeRepository.getExchangeList()
         } returns ResultWrapper.error(Exception())
 
         // act

@@ -1,10 +1,8 @@
-package com.example.coinapp.core.domain.data_souce
+package com.example.coinapp.core.domain.repository
 
 import com.example.coinapp.core.domain.model.AppAsset
 import com.example.coinapp.core.domain.model.ResultWrapper
 
-interface AssetsDataSource {
-    interface Remote : AssetsDataSource
-
+interface AssetRepository {
     suspend fun getAssetsList(): ResultWrapper<List<AppAsset>>
 }

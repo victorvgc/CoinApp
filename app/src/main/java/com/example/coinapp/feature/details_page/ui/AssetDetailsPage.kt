@@ -24,11 +24,29 @@ fun AssetDetailsPage(
     ) { data ->
         AssetDetailsScreen(
             data = data,
-            onSymbolClick = {},
-            onExchangeClick = {},
-            onNavigateBack = {},
-            onBackToExchangeClick = {},
-            onBackToSymbolClick = {},
+            onSymbolClick = { exchange, symbol ->
+                viewModel.onUiAction(
+                    AssetDetailsViewModel.UiAction.OnSelectSymbol(exchange, symbol)
+                )
+            },
+            onExchangeClick = {
+                viewModel.onUiAction(
+                    AssetDetailsViewModel.UiAction.OnSelectExchange(it)
+                )
+            },
+            onNavigateBack = {
+                navHostController.navigateUp()
+            },
+            onBackToExchangeClick = {
+                viewModel.onUiAction(
+                    AssetDetailsViewModel.UiAction.OnBackFromSymbolsList
+                )
+            },
+            onBackToSymbolClick = {
+                viewModel.onUiAction(
+                    AssetDetailsViewModel.UiAction.OnBackFromOrderBook(it)
+                )
+            },
         )
     }
 }
