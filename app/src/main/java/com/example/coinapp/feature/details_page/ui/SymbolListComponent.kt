@@ -47,12 +47,14 @@ fun SymbolsListComponent(
         ListItem(
             overlineContent = {
                 Text(
-                    text = selectedExchange.id
+                    text = selectedExchange.id,
+                    color = MaterialTheme.colorScheme.onSurface,
                 )
             },
             headlineContent = {
                 Text(
-                    text = selectedExchange.name
+                    text = selectedExchange.name,
+                    color = MaterialTheme.colorScheme.onSurface,
                 )
             },
             trailingContent = {
