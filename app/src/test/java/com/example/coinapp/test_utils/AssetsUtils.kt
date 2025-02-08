@@ -9,6 +9,7 @@ object AssetsUtils {
     const val NAME = "Test"
     const val DAILY_VOLUME = 123.4
     const val ICON = "icon"
+    const val PRICE = "123.45"
 
     val remoteAssetsList = listOf(
         RemoteAsset(
@@ -16,14 +17,16 @@ object AssetsUtils {
             name = NAME,
             dailyVolume = DAILY_VOLUME,
             isCrypto = 1,
-            icon = ICON
+            icon = ICON,
+            price = PRICE
         ),
         RemoteAsset(
             id = ID,
             name = NAME,
             dailyVolume = DAILY_VOLUME,
             isCrypto = 0,
-            icon = ICON
+            icon = ICON,
+            price = PRICE
         ),
     )
 
@@ -33,14 +36,16 @@ object AssetsUtils {
             name = NAME,
             dailyVolume = BigDecimal(DAILY_VOLUME),
             isCrypto = true,
-            iconId = ICON
+            iconId = ICON,
+            price = BigDecimal(PRICE)
         ),
         AppAsset(
             id = ID,
             name = NAME,
             dailyVolume = BigDecimal(DAILY_VOLUME),
             isCrypto = false,
-            iconId = ICON
+            iconId = ICON,
+            price = BigDecimal(PRICE)
         ),
     )
 }

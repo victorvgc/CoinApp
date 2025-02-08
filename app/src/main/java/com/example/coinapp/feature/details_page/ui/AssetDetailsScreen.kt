@@ -47,8 +47,8 @@ fun AssetDetailsScreen(
     data: AssetDetailsData,
     onNavigateBack: () -> Unit,
     onExchangeClick: (UiExchangeItem) -> Unit,
-    onSymbolClick: (UiSymbolItem) -> Unit,
-    onBackToSymbolClick: () -> Unit,
+    onSymbolClick: (UiExchangeItem, UiSymbolItem) -> Unit,
+    onBackToSymbolClick: (UiExchangeItem) -> Unit,
     onBackToExchangeClick: () -> Unit,
 ) {
     val numberFormatter = NumberFormatter.with()
@@ -174,7 +174,7 @@ private fun Preview(
     AppTheme {
         AssetDetailsScreen(
             data = uiData,
-            onSymbolClick = {},
+            onSymbolClick = { _, _ -> },
             onExchangeClick = {},
             onNavigateBack = {},
             onBackToExchangeClick = {},

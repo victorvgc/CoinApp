@@ -2,15 +2,27 @@ package com.example.coinapp.core.di
 
 import com.example.coinapp.BuildConfig
 import com.example.coinapp.core.data.api.CoinAppService
-import com.example.coinapp.core.data.data_source.RemoteAssetsDataSourceImpl
-import com.example.coinapp.core.data.repository.AssetsRepositoryImpl
-import com.example.coinapp.core.domain.data_souce.AssetsDataSource
-import com.example.coinapp.core.domain.repository.AssetsRepository
+import com.example.coinapp.core.data.data_source.RemoteAssetDataSourceImpl
+import com.example.coinapp.core.data.data_source.RemoteExchangeDataSourceImpl
+import com.example.coinapp.core.data.data_source.RemoteOrderBookDataSourceImpl
+import com.example.coinapp.core.data.data_source.RemoteSymbolDataSourceImpl
+import com.example.coinapp.core.data.repository.AssetRepositoryImpl
+import com.example.coinapp.core.data.repository.ExchangeRepositoryImpl
+import com.example.coinapp.core.data.repository.OrderBookRepositoryImpl
+import com.example.coinapp.core.data.repository.SymbolRepositoryImpl
+import com.example.coinapp.core.domain.data_souce.AssetDataSource
+import com.example.coinapp.core.domain.data_souce.ExchangeDataSource
+import com.example.coinapp.core.domain.data_souce.OrderBookDataSource
+import com.example.coinapp.core.domain.data_souce.SymbolDataSource
+import com.example.coinapp.core.domain.repository.AssetRepository
+import com.example.coinapp.core.domain.repository.ExchangeRepository
+import com.example.coinapp.core.domain.repository.OrderBookRepository
+import com.example.coinapp.core.domain.repository.SymbolRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
@@ -38,7 +50,7 @@ val mainModule = module {
 
         Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .client(client.build())
             .build()
     }
@@ -48,16 +60,52 @@ val mainModule = module {
     }
 
     // data source
-    factory<AssetsDataSource.Remote> {
-        RemoteAssetsDataSourceImpl(
+    factory<AssetDataSource.Remote> {
+        RemoteAssetDataSourceImpl(
+            coinAppService = get()
+        )
+    }
+
+    factory<ExchangeDataSource.Remote> {
+        RemoteExchangeDataSourceImpl(
+            coinAppService = get()
+        )
+    }
+
+    factory<SymbolDataSource.Remote> {
+        RemoteSymbolDataSourceImpl(
+            coinAppService = get()
+        )
+    }
+
+    factory<OrderBookDataSource.Remote> {
+        RemoteOrderBookDataSourceImpl(
             coinAppService = get()
         )
     }
 
     // repository
-    factory<AssetsRepository> {
-        AssetsRepositoryImpl(
-            remoteAssetsDataSource = get()
+    factory<AssetRepository> {
+        AssetRepositoryImpl(
+            remoteAssetDataSource = get()
+        )
+    }
+
+    factory<ExchangeRepository> {
+        ExchangeRepositoryImpl(
+            exchangeDataSource = get()
+        )
+    }
+
+    factory<SymbolRepository> {
+        SymbolRepositoryImpl(
+            symbolDataSource = get()
+        )
+    }
+
+    factory<OrderBookRepository> {
+        OrderBookRepositoryImpl(
+            orderBookDataSource = get()
         )
     }
 }

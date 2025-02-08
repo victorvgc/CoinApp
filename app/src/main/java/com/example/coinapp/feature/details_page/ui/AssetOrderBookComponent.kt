@@ -39,7 +39,7 @@ fun AssetOrderBookComponent(
     selectedSymbol: UiSymbolItem,
     orderBookData: UiOrderBookData,
     onClickBackToExchange: () -> Unit,
-    onClickBackToSymbol: () -> Unit,
+    onClickBackToSymbol: (UiExchangeItem) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -97,7 +97,9 @@ fun AssetOrderBookComponent(
                 },
                 trailingContent = {
                     IconButton(
-                        onClick = onClickBackToSymbol
+                        onClick = {
+                            onClickBackToSymbol(selectedExchange)
+                        }
                     ) {
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowUp,

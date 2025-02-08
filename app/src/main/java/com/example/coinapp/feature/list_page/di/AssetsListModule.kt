@@ -10,7 +10,7 @@ val assetsListModule = module {
     // use case
     factory<GetAllAssetsUseCase> {
         GetAllAssetsUseCaseImpl(
-            assetsRepository = get()
+            assetRepository = get()
         )
     }
 

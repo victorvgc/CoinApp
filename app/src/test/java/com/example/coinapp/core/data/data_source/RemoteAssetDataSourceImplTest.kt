@@ -16,9 +16,9 @@ import org.junit.Test
 import retrofit2.Response
 import java.math.BigDecimal
 
-class RemoteAssetsDataSourceImplTest {
+class RemoteAssetDataSourceImplTest {
 
-    private lateinit var sut: RemoteAssetsDataSourceImpl
+    private lateinit var sut: RemoteAssetDataSourceImpl
 
     private val mockCoinAppService: CoinAppService = mockk()
 
@@ -26,7 +26,7 @@ class RemoteAssetsDataSourceImplTest {
 
     @Before
     fun setup() {
-        sut = RemoteAssetsDataSourceImpl(
+        sut = RemoteAssetDataSourceImpl(
             coinAppService = mockCoinAppService
         )
     }
@@ -108,6 +108,7 @@ class RemoteAssetsDataSourceImplTest {
                         isCrypto = 1,
                         dailyVolume = 0.0,
                         icon = null,
+                        price = "123",
                     )
                 )
             }
@@ -136,6 +137,7 @@ class RemoteAssetsDataSourceImplTest {
                     isCrypto = 1,
                     dailyVolume = 0.0,
                     icon = "a-b-c",
+                    price = AssetsUtils.PRICE,
                 )
             )
         }
@@ -157,6 +159,7 @@ class RemoteAssetsDataSourceImplTest {
                     isCrypto = true,
                     dailyVolume = BigDecimal.ZERO,
                     iconId = "abc",
+                    price = BigDecimal(AssetsUtils.PRICE),
                 )
             )
         }
