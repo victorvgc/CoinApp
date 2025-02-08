@@ -49,12 +49,14 @@ fun AssetOrderBookComponent(
         ListItem(
             overlineContent = {
                 Text(
-                    text = selectedExchange.id
+                    text = selectedExchange.id,
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             },
             headlineContent = {
                 Text(
-                    text = selectedExchange.name
+                    text = selectedExchange.name,
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             },
             trailingContent = {
@@ -87,12 +89,14 @@ fun AssetOrderBookComponent(
                 ),
                 overlineContent = {
                     Text(
-                        text = selectedSymbol.id
+                        text = selectedSymbol.id,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 },
                 headlineContent = {
                     Text(
-                        text = selectedSymbol.name
+                        text = selectedSymbol.name,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 },
                 trailingContent = {

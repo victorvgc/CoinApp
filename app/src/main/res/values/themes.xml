@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.CoinApp" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.CoinApp" parent="android:Theme.Material.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
 </resources>

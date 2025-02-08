@@ -37,7 +37,9 @@ fun ExchangeListComponent(
         Text(
             modifier = Modifier.padding(horizontal = Dimens.Spacing.medium),
             text = stringResource(R.string.select_exchange),
-            style = MaterialTheme.typography.titleSmall
+            style = MaterialTheme.typography.titleSmall.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            )
         )
         Spacer(modifier = Modifier.height(Dimens.Spacing.small))
         if (list.isNotEmpty()) {
@@ -49,12 +51,14 @@ fun ExchangeListComponent(
                         },
                         overlineContent = {
                             Text(
-                                text = item.id
+                                text = item.id,
+                                color = MaterialTheme.colorScheme.onSurface,
                             )
                         },
                         headlineContent = {
                             Text(
-                                text = item.name
+                                text = item.name,
+                                color = MaterialTheme.colorScheme.onSurface,
                             )
                         },
                         trailingContent = {
@@ -79,7 +83,9 @@ fun ExchangeListComponent(
                     .fillMaxWidth()
                     .padding(Dimens.Spacing.large),
                 text = stringResource(R.string.empty_list),
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.bodyLarge.copy(
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             )
         }
     }

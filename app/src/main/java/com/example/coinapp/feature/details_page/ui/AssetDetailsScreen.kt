@@ -1,5 +1,6 @@
 package com.example.coinapp.feature.details_page.ui
 
+import android.content.res.Configuration
 import android.icu.number.NumberFormatter
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -149,23 +150,32 @@ private fun Header(
         Column {
             Text(
                 text = assetName,
-                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Light)
+                style = MaterialTheme.typography.titleLarge.copy(
+                    fontWeight = FontWeight.Light,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             )
             Spacer(modifier = Modifier.height(Dimens.Spacing.medium))
             Text(
                 text = stringResource(R.string.asset_daily_volume).format(assetDailyVolume),
-                style = MaterialTheme.typography.bodySmall
+                style = MaterialTheme.typography.bodySmall.copy(
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             )
             Spacer(modifier = Modifier.height(Dimens.Spacing.small))
             Text(
                 text = stringResource(R.string.asset_price).format(assetPrice),
-                style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.SemiBold)
+                style = MaterialTheme.typography.bodySmall.copy(
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             )
         }
     }
 }
 
-@Preview
+@Preview(name = "Light Theme")
+@Preview(name = "Dark Theme", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun Preview(
     @PreviewParameter(AssetDetailsPreviewParameters::class)

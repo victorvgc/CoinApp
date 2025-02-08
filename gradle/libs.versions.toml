@@ -17,6 +17,7 @@ coil = "3.1.0"
 mockk = "1.13.16"
 kotlin-test = "1.10.1"
 turbine = "1.2.0"
+accompanist = "0.27.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -49,6 +50,7 @@ coil-network = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", versi
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlin-test" }
 turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+accompanist = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
