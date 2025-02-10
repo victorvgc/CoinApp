@@ -1,7 +1,7 @@
 package com.example.coinapp.feature.list_page.domain.use_case
 
 import com.example.coinapp.core.domain.model.ResultWrapper
-import com.example.coinapp.core.domain.repository.AssetsRepository
+import com.example.coinapp.core.domain.repository.AssetRepository
 import com.example.coinapp.test_utils.AssetsUtils
 import com.example.coinapp.test_utils.coVerifyOnce
 import io.mockk.coEvery
@@ -15,12 +15,12 @@ class GetAllAssetsUseCaseImplTest {
 
     private lateinit var sut: GetAllAssetsUseCaseImpl
 
-    private val mockAssetsRepository: AssetsRepository = mockk()
+    private val mockAssetRepository: AssetRepository = mockk()
 
     @Before
     fun setup() {
         sut = GetAllAssetsUseCaseImpl(
-            assetsRepository = mockAssetsRepository
+            assetRepository = mockAssetRepository
         )
     }
 
@@ -28,7 +28,7 @@ class GetAllAssetsUseCaseImplTest {
     fun `when invoke then call the repository properly`() = runTest {
         // arrange
         coEvery {
-            mockAssetsRepository.getAssetsList()
+            mockAssetRepository.getAssetsList()
         } returns ResultWrapper.success(emptyList())
 
         // act
@@ -36,7 +36,7 @@ class GetAllAssetsUseCaseImplTest {
 
         // assert
         coVerifyOnce {
-            mockAssetsRepository.getAssetsList()
+            mockAssetRepository.getAssetsList()
         }
     }
 
@@ -44,7 +44,7 @@ class GetAllAssetsUseCaseImplTest {
     fun `when invoke is successful then return the success result`() = runTest {
         // arrange
         coEvery {
-            mockAssetsRepository.getAssetsList()
+            mockAssetRepository.getAssetsList()
         } returns ResultWrapper.success(AssetsUtils.appAssetsList)
 
         // act
@@ -63,7 +63,7 @@ class GetAllAssetsUseCaseImplTest {
     fun `when invoke is an error then return the error result`() = runTest {
         // arrange
         coEvery {
-            mockAssetsRepository.getAssetsList()
+            mockAssetRepository.getAssetsList()
         } returns ResultWrapper.error(Exception())
 
         // act

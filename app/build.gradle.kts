@@ -70,7 +70,7 @@ dependencies {
     implementation(libs.gradle.secrets)
 
     implementation(libs.retrofit)
-    implementation(libs.retrofit.moshi)
+    implementation(libs.retrofit.gson)
 
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
@@ -85,4 +85,6 @@ dependencies {
 
     implementation(libs.coil.compose)
     implementation(libs.coil.network)
+
+    implementation(libs.accompanist)
 }

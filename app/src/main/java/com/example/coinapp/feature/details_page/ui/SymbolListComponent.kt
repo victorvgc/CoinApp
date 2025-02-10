@@ -37,7 +37,7 @@ fun SymbolsListComponent(
     selectedExchange: UiExchangeItem,
     list: List<UiSymbolItem>,
     onBackClick: () -> Unit,
-    onItemClick: (UiSymbolItem) -> Unit,
+    onItemClick: (UiExchangeItem, UiSymbolItem) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -47,12 +47,14 @@ fun SymbolsListComponent(
         ListItem(
             overlineContent = {
                 Text(
-                    text = selectedExchange.id
+                    text = selectedExchange.id,
+                    color = MaterialTheme.colorScheme.onSurface,
                 )
             },
             headlineContent = {
                 Text(
-                    text = selectedExchange.name
+                    text = selectedExchange.name,
+                    color = MaterialTheme.colorScheme.onSurface,
                 )
             },
             trailingContent = {
@@ -93,7 +95,7 @@ fun SymbolsListComponent(
                                 overlineColor = MaterialTheme.colorScheme.onSurfaceVariant,
                             ),
                             modifier = Modifier.clickable {
-                                onItemClick(item)
+                                onItemClick(selectedExchange, item)
                             },
                             overlineContent = {
                                 Text(
@@ -151,7 +153,7 @@ private fun Preview(
                     name = "PREVIEW"
                 ),
                 list = list,
-                onItemClick = {},
+                onItemClick = { _, _ -> },
                 onBackClick = {}
             )
         }

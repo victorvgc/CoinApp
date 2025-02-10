@@ -3,6 +3,7 @@ package com.example.coinapp.core.ui.orderbook_chart.ui
 import android.content.res.Configuration
 import android.icu.number.NumberFormatter
 import android.icu.number.Precision
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -10,12 +11,13 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
@@ -44,7 +46,9 @@ fun OrderBookComponent(
         .reversed()
     val askEntries = data.entries.filter { it.type == OrderBookEntryType.ASK }.sortedBy { it.price }
 
-    Column {
+    Column(
+        modifier = Modifier.background(color = MaterialTheme.colorScheme.surface)
+    ) {
         ElevatedCard(
             shape = RectangleShape,
             colors = CardDefaults.cardColors()
@@ -92,10 +96,13 @@ fun OrderBookComponent(
             }
         }
 
+        val scrollState = rememberScrollState()
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(IntrinsicSize.Min)
+                .verticalScroll(scrollState)
         ) {
             val numberFormatter = NumberFormatter.with()
                 .locale(Locale.getDefault())
@@ -108,6 +115,7 @@ fun OrderBookComponent(
             Column(
                 modifier = Modifier
                     .weight(1f)
+                    .background(color = MaterialTheme.colorScheme.primary.copy(alpha = .1f))
                     .padding(vertical = Dimens.Spacing.medium),
                 verticalArrangement = Arrangement.spacedBy(Dimens.Spacing.medium)
             ) {
@@ -120,18 +128,18 @@ fun OrderBookComponent(
                         )
                         Text(
                             modifier = Modifier.weight(1f),
-                            text = context.getString(R.string.currency_prefix).format(numberFormatter.format(it.price).toString()),
+                            text = context.getString(R.string.currency_prefix)
+                                .format(numberFormatter.format(it.price).toString()),
                             style = bodyStyle
                         )
                     }
                 }
             }
 
-            VerticalDivider()
-
             Column(
                 modifier = Modifier
                     .weight(1f)
+                    .background(color = MaterialTheme.colorScheme.tertiary.copy(alpha = .1f))
                     .padding(vertical = Dimens.Spacing.medium),
                 verticalArrangement = Arrangement.spacedBy(Dimens.Spacing.medium)
             ) {
@@ -139,7 +147,8 @@ fun OrderBookComponent(
                     Row {
                         Text(
                             modifier = Modifier.weight(1f),
-                            text = context.getString(R.string.currency_prefix).format(numberFormatter.format(it.price).toString()),
+                            text = context.getString(R.string.currency_prefix)
+                                .format(numberFormatter.format(it.price).toString()),
                             style = bodyStyle
                         )
                         Text(

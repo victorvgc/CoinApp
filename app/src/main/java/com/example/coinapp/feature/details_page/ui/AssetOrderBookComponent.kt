@@ -39,7 +39,7 @@ fun AssetOrderBookComponent(
     selectedSymbol: UiSymbolItem,
     orderBookData: UiOrderBookData,
     onClickBackToExchange: () -> Unit,
-    onClickBackToSymbol: () -> Unit,
+    onClickBackToSymbol: (UiExchangeItem) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -49,12 +49,14 @@ fun AssetOrderBookComponent(
         ListItem(
             overlineContent = {
                 Text(
-                    text = selectedExchange.id
+                    text = selectedExchange.id,
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             },
             headlineContent = {
                 Text(
-                    text = selectedExchange.name
+                    text = selectedExchange.name,
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             },
             trailingContent = {
@@ -87,17 +89,21 @@ fun AssetOrderBookComponent(
                 ),
                 overlineContent = {
                     Text(
-                        text = selectedSymbol.id
+                        text = selectedSymbol.id,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 },
                 headlineContent = {
                     Text(
-                        text = selectedSymbol.name
+                        text = selectedSymbol.name,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 },
                 trailingContent = {
                     IconButton(
-                        onClick = onClickBackToSymbol
+                        onClick = {
+                            onClickBackToSymbol(selectedExchange)
+                        }
                     ) {
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowUp,
