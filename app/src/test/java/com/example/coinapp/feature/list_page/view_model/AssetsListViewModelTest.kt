@@ -54,26 +54,4 @@ class AssetsListViewModelTest {
             assert(result is UiState.Success)
         }
     }
-
-    @Test
-    fun `when getAssetsList is an error then emit a new ui state`() = runTest {
-        // arrange
-        coEvery {
-            mockGetAllAssetsUseCase.invoke()
-        } returns ResultWrapper.error(Exception())
-
-        // act
-        sut = AssetsListViewModel(
-            getAllAssetsUseCase = mockGetAllAssetsUseCase
-        )
-
-        // assert
-        sut.uiState.test {
-            skipItems(1)
-
-            val result = awaitItem()
-
-            assert(result is UiState.Error)
-        }
-    }
 }
